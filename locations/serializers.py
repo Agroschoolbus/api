@@ -13,7 +13,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Location
-        fields = ['latitude', 'longitude', 'created_at', 'user']
+        fields = ['latitude', 'longitude', 'created_at', 'status', 'user']
 
     # Optionally, allow setting the user when creating a location
     def create(self, validated_data):
