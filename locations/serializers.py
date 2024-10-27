@@ -17,6 +17,6 @@ class LocationSerializer(serializers.ModelSerializer):
 
     # Optionally, allow setting the user when creating a location
     def create(self, validated_data):
-        request_user = self.context['request'].user  # Use the current logged-in user
+        request_user = self.context['request'].user
         location = Location.objects.create(user=request_user, **validated_data)
         return location
