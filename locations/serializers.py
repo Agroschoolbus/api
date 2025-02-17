@@ -9,14 +9,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 class LocationSerializer(serializers.ModelSerializer):
 
-    user = UserSerializer(read_only=True)
-
+    # user = UserSerializer(read_only=True)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     class Meta:
         model = Location
-        fields = ['latitude', 'longitude', 'created_at', 'status', 'user']
+        fields = ['id', 'latitude', 'longitude', 'created_at', 'status', 'buckets', 'user']
 
     # Optionally, allow setting the user when creating a location
-    def create(self, validated_data):
-        request_user = self.context['request'].user
-        location = Location.objects.create(user=request_user, **validated_data)
-        return location
+    # def create(self, validated_data):
+    #     request_user = self.context['request'].user
+    #     location = Location.objects.create(user=request_user, **validated_data)
+    #     return location

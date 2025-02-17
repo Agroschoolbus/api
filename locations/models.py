@@ -23,6 +23,7 @@ class Location(models.Model):
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)
+    buckets = models.IntegerField()
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='locations')
 

@@ -13,4 +13,4 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('latitude', 'longitude', 'created_at')
+    list_display = ('id', 'latitude', 'longitude', 'created_at')
