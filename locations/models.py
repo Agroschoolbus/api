@@ -4,15 +4,21 @@ from django.db import models
 
 class User(models.Model):
     # Primary key (id) is automatically created by Django, no need to declare it explicitly
+    id = models.CharField(
+        primary_key=True,
+        max_length=32,
+        editable=True
+    )
     name = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     username = models.CharField(max_length=100, unique=True)
     
     USER_TYPES = [
         ('producer', 'Producer'),
-        ('consumer', 'Consumer'),
+        ('factory', 'Factory'),
+        ('transporter', 'Transporter')
     ]
-    type = models.CharField(max_length=10, choices=USER_TYPES, default='producer')
+    type = models.CharField(max_length=12, choices=USER_TYPES, default='producer')
 
     def __str__(self):
         return f"{self.name} {self.lastname} ({self.username})"
